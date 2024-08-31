@@ -1,17 +1,8 @@
-package main
+package Hw
 
 import (
 	"fmt"
-	"strings"
 )
-
-// countWords подсчитывает количество слов в строке
-func countWords(s string) int {
-	// Разделяем строку на слова
-	words := strings.Fields(s)
-	// Возвращаем количество слов
-	return len(words)
-}
 
 func main() {
 	// Примеры строк для тестирования
@@ -24,6 +15,6 @@ func main() {
 		"Two words",
 	}
 	for _, sentence := range sentences {
-		fmt.Printf("'%s' contains %d words.\n", sentence, countWords(sentence))
+		fmt.Printf("'%s' contains %d words.\n", sentence, CountWords(sentence))
 	}
 }

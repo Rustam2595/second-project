@@ -76,6 +76,7 @@ type Animal interface {
 	Sleep()
 }
 
+// //////////
 type Cat struct {
 	Name  string
 	Color string
@@ -89,6 +90,8 @@ func (c Cat) Sleep() {
 	fmt.Printf("%s %s is sleep\n", c.Color, c.Name)
 }
 
+// Cat - полностью реализует интерфейс Animal
+// ////////////////////
 type Dog struct {
 	Name string
 	Age  int
@@ -180,3 +183,73 @@ func main() {
 	//////////////////////////////////////////////
 
 }
+
+////////////////////////////////////////
+//package main
+//
+//import (
+//"github.com/gin-gonic/gin"
+//"net/http"
+//)
+//
+//type Task struct {
+//	Id string `json:"id"`
+//	Name string `json:"name"`
+//}
+//
+//var tasks = []Task{
+//	{Id: "1", Name: "Task One"},
+//	{Id: "2", Name: "Task Two"},
+//	{Id: "3", Name: "Task Three"},
+//}
+//
+//func GetTasksById(ctx *gin.Context) {
+//	for _, task := range tasks {
+//		if task.Id == ctx.Param("id") {
+//			ctx.JSON(http.StatusOK, gin.H{"task": task})
+//			return
+//		}
+//	}
+//	ctx.JSON(http.StatusNotFound, gin.H{"message": "task not found"})
+//}
+//
+//func PutTask(ctx *gin.Context) {
+//	var task Task
+//	if err := ctx.ShouldBindBodyWithJSON(task); err != nil {
+//		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+//	}
+//	for taskId, task := range tasks {
+//		if task.Id == ctx.Param("id") {
+//			tasks[taskId] = task
+//			ctx.JSON(http.StatusOK, gin.H{"task": task})
+//			return
+//		}
+//	}
+//	ctx.JSON(http.StatusNotFound, gin.H{"message": "task not found"})
+//}
+//
+//func DeleteTask(ctx *gin.Context) {
+//	var task Task
+//	//if err := ctx.ShouldBindBodyWithJSON(task); err != nil {
+//	//	ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+//	//}
+//	for index, task := range tasks {
+//		if task.Id == ctx.Param("id") {
+//			tasks = append(tasks[:index], tasks[index+1:]...)
+//			ctx.JSON(http.StatusOK, gin.H{})
+//			return
+//		}
+//	}
+//	ctx.JSON(http.StatusNotFound, gin.H{"error": "task not found"})
+//}
+//
+//func main() {
+//	g := gin.Default()
+//	g.GET("/tasks:id", GetTasksById)
+//	g.PUT("/tasks:id", PutTask)
+//	g.DELETE("/tasks:id", DeleteTask)
+//	err := g.Run(":8080")
+//	if err != nil {
+//		return
+//	}
+//}
